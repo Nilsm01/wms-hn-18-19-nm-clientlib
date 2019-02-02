@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D43BA54-1C67-41CF-BA80-BA7D696A094D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientLib</RootNamespace>
+    <AssemblyName>ClientLib</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientHandle.cs" />
+    <Compile Include="Connection\ConnectionHandler.cs" />
+    <Compile Include="Connection\DataPackage\Commands\SongListReceived.cs" />
+    <Compile Include="Connection\DataPackage\Evaluate\DataExchange.cs" />
+    <Compile Include="Connection\DataPackage\Evaluate\DownloadRequest.cs" />
+    <Compile Include="Connection\DataPackage\Evaluation.cs" />
+    <Compile Include="Connection\DataPackage\PackageManager.cs" />
+    <Compile Include="Connection\DataPackage\Template\DataPackage.cs" />
+    <Compile Include="Connection\Download\ServerInterface.cs" />
+    <Compile Include="Connection\TrafficHandler.cs" />
+    <Compile Include="Crypto\Decrypt.cs" />
+    <Compile Include="Crypto\Encrypt.cs" />
+    <Compile Include="Crypto\Manager.cs" />
+    <Compile Include="Crypto\Resources.cs" />
+    <Compile Include="Events\Args\EventArgs.cs" />
+    <Compile Include="Events\ClientEvents\ConnectedToServer.cs" />
+    <Compile Include="Events\ClientEvents\DownloadPercentageChanged.cs" />
+    <Compile Include="Events\ClientEvents\EventHandler.cs" />
+    <Compile Include="Events\ClientEvents\FileDownloaded.cs" />
+    <Compile Include="Events\ClientEvents\HomeScreen.cs" />
+    <Compile Include="Events\ClientEvents\LasPlayedListUpdated.cs" />
+    <Compile Include="Events\ClientEvents\SongList.cs" />
+    <Compile Include="Events\ClientEvents\SongQuery.cs" />
+    <Compile Include="Events\DataPackageEvents\DataExchangeReceived.cs" />
+    <Compile Include="Events\DataPackageEvents\EventHandler.cs" />
+    <Compile Include="Events\ErrorEvents\ConnectionError.cs" />
+    <Compile Include="Events\ErrorEvents\EvaluationError.cs" />
+    <Compile Include="Events\ErrorEvents\EventHandler.cs" />
+    <Compile Include="Events\ErrorEvents\IOError.cs" />
+    <Compile Include="Events\ErrorEvents\LoginFailed.cs" />
+    <Compile Include="Events\ErrorEvents\NetworkStreamError.cs" />
+    <Compile Include="Events\ServerEvents\EventHandler.cs" />
+    <Compile Include="Events\ServerEvents\FileNotFound.cs" />
+    <Compile Include="Events\ServerEvents\KickedFromServer.cs" />
+    <Compile Include="Events\ServerEvents\LoginFailed.cs" />
+    <Compile Include="Events\ServerEvents\PermissonError.cs" />
+    <Compile Include="Events\ServerEvents\ServerMaintenance.cs" />
+    <Compile Include="FileManager\DirectoryAvailabilityChecker.cs" />
+    <Compile Include="FileManager\FileAvailabilityChecker.cs" />
+    <Compile Include="Login\Credentials.cs" />
+    <Compile Include="Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PublicResources\ResourceInput.cs" />
+    <Compile Include="PublicResources\ResourceProvider.cs" />
+    <Compile Include="Resources\ServerCommandResponders\HomeScreen.cs" />
+    <Compile Include="Resources\ServerCommandResponders\SongQuery.cs" />
+    <Compile Include="Resources\ServerResources.cs" />
+    <Compile Include="Resources\Services\DataPackageLog.cs" />
+    <Compile Include="Resources\Services\FileCreater.cs" />
+    <Compile Include="Resources\Services\FileLoader.cs" />
+    <Compile Include="Resources\Services\MaintenanceScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Services\MaintenanceScreen.Designer.cs">
+      <DependentUpon>MaintenanceScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Services\SendDataPackage.cs" />
+    <Compile Include="Resources\Settings.cs" />
+    <Compile Include="Resources\XML.cs" />
+    <Compile Include="UserProfile\Administrator.cs" />
+    <Compile Include="UserProfile\Manager.cs" />
+    <Compile Include="UserProfile\Template\UserProfile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Services\MaintenanceScreen.resx">
+      <DependentUpon>MaintenanceScreen.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CircleLoader.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

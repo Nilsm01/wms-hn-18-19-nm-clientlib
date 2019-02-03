@@ -21,14 +21,11 @@ namespace ClientLib.Connection.Download
                 int bytesRead;
                 while ((bytesRead = Resources.ServerResources.stream.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    //buffer = Crypto.Decrypt.Byte(buffer, Resources.ServerResources.ConnectionKey);
-                    //Console.WriteLine("Decrypted");
                     output.Write(buffer, 0, bytesRead);
                     DownloadedBytes += bytesRead;
                     percentage = (DownloadedBytes * 100) / Size;
                     if(percentage != LastPercentage)
                     {
-                        //Console.WriteLine("Downloaded " + percentage + "%");
                         Events.ClientEvents.DownloadPercentageChanged.OnAppear(new Events.Args.EventArgs.ClientEventArgs());
                     }
                     LastPercentage = percentage;
